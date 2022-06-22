@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/song-service
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: ${POSTGRES_DEFAULT_PASSWORD}
+
+server:
+  port: 8081
