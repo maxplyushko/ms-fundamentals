@@ -22,7 +22,13 @@ public class SongServiceImpl implements SongService {
 
   @Override
   public Song create(Song song) {
+    log.info("New song: {} was added", song.getName());
     return repository.save(song);
+  }
+
+  @Override
+  public List<Song> findAll() {
+    return repository.findAll();
   }
 
   @Override

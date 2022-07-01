@@ -1,6 +1,6 @@
 package com.epam.songservice.web;
 
-import com.epam.songservice.domain.dto.SongDto;
+import com.epam.commons.dto.SongDto;
 import com.epam.songservice.domain.entity.Song;
 import com.epam.songservice.mapper.SongMapper;
 import com.epam.songservice.service.SongService;
@@ -38,6 +38,12 @@ public class SongController {
   public ResponseEntity<SongDto> create(@RequestBody @Valid SongDto songDto) {
     final Song song = service.create(mapper.dtoToEntity(songDto));
     return ResponseEntity.ok(new SongDto(song.getId()));
+  }
+
+  @GetMapping
+  public ResponseEntity<List<SongDto>> findAll() {
+    final List<Song> songs = service.findAll();
+    return ResponseEntity.ok(mapper.entityToDto(songs));
   }
 
   @GetMapping("/{id}")

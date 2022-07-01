@@ -1,6 +1,6 @@
 package com.epam.resourceservice.web;
 
-import com.epam.resourceservice.domain.dto.ExceptionDto;
+import com.epam.commons.dto.ExceptionDto;
 import com.epam.resourceservice.exception.ResourceNotFoundException;
 import javax.validation.ValidationException;
 import org.springframework.http.HttpStatus;

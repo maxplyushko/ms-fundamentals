@@ -6,7 +6,6 @@ plugins {
 
 group = 'com.epam'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
 
 configurations {
     compileOnly {
@@ -19,13 +18,21 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'org.springframework.cloud:spring-cloud-stream:3.0.13.RELEASE'
+    implementation 'org.springframework.cloud:spring-cloud-starter-stream-rabbit:3.0.13.RELEASE'
+
     compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.projectlombok:lombok'
     implementation 'org.apache.tika:tika-core:2.4.1'
     implementation 'org.apache.tika:tika-parser-audiovideo-module:2.4.1'
+    implementation 'io.github.resilience4j:resilience4j-spring-boot2:1.7.1'
+
+    implementation project(':resource-commons')
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
