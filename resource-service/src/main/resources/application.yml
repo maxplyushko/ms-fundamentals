@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/resource-service
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: ${POSTGRES_DEFAULT_PASSWORD}
+
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 20MB
+      max-request-size: 25MB
