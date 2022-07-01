@@ -1,6 +1,6 @@
 package com.epam.songservice.web;
 
-import com.epam.songservice.domain.dto.ExceptionDto;
+import com.epam.commons.dto.ExceptionDto;
 import com.epam.songservice.exception.SongNotFoundException;
 import java.util.List;
 import javax.xml.bind.ValidationException;

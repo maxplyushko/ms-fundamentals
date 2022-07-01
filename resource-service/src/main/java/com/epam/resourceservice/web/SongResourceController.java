@@ -1,12 +1,13 @@
 package com.epam.resourceservice.web;
 
-import com.epam.resourceservice.domain.entity.SongContent;
+import com.epam.commons.dto.SongContentDto;
 import com.epam.resourceservice.domain.entity.SongResource;
-import com.epam.resourceservice.processor.SongResourceProcessor;
+import com.epam.resourceservice.processor.QueueSender;
+import com.epam.resourceservice.processor.ResourceProcessor;
 import com.epam.resourceservice.validation.Mp3Format;
 import java.util.List;
 import javax.validation.constraints.Size;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -21,30 +22,28 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Validated
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(path = "/resources", produces = MediaType.APPLICATION_JSON_VALUE)
 public class SongResourceController {
 
-  private final SongResourceProcessor processor;
-
-  @Autowired
-  public SongResourceController(SongResourceProcessor processor) {
-    this.processor = processor;
-  }
+  private final ResourceProcessor resourceProcessor;
+  private final QueueSender queueSender;
 
   @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public ResponseEntity<Long> upload(@RequestParam("file") @Mp3Format MultipartFile file) {
-    final SongResource songResource = processor.upload(file);
+    final SongResource songResource = resourceProcessor.upload(file);
+    queueSender.send(songResource.getId());
     return ResponseEntity.ok(songResource.getId());
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<SongContent> download(@PathVariable long id) {
-    return ResponseEntity.ok(processor.download(id));
+  public ResponseEntity<SongContentDto> download(@PathVariable long id) {
+    return ResponseEntity.ok(resourceProcessor.download(id));
   }
 
   @DeleteMapping
   public ResponseEntity<List<Long>> delete(@RequestParam("id") @Size(max = 200) List<Long> id) {
-    final List<Long> deletedIds = processor.delete(id);
+    final List<Long> deletedIds = resourceProcessor.delete(id);
     return ResponseEntity.ok(deletedIds);
   }
 }

@@ -1,6 +1,6 @@
 package com.epam.songservice.mapper;
 
-import com.epam.songservice.domain.dto.SongDto;
+import com.epam.commons.dto.SongDto;
 import com.epam.songservice.domain.entity.Song;
 import org.mapstruct.Builder;
 import org.mapstruct.Mapper;

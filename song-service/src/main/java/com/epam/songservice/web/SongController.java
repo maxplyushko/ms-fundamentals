@@ -1,6 +1,6 @@
 package com.epam.songservice.web;
 
-import com.epam.songservice.domain.dto.SongDto;
+import com.epam.commons.dto.SongDto;
 import com.epam.songservice.domain.entity.Song;
 import com.epam.songservice.mapper.SongMapper;
 import com.epam.songservice.service.SongService;
