@@ -16,6 +16,6 @@ public class SongQueueSender implements QueueSender {
 
   @Override
   public void send(Long resourceId) {
-    rabbitTemplate.convertAndSend(queue.getName(), resourceId);
+    rabbitTemplate.convertAndSend(queue.getName(), String.valueOf(resourceId));
   }
 }

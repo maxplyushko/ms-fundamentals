@@ -12,10 +12,10 @@ import org.springframework.context.annotation.Configuration;
 
 @EnableRabbit
 @Configuration
-public class QueueConfig {
+public class RabbitMQConfig {
 
   @Value("${rabbitmq.queue-name}")
-  private String message;
+  private String queueName;
 
   @Value("${rabbitmq.host}")
   private String host;
@@ -31,7 +31,7 @@ public class QueueConfig {
 
   @Bean
   public Queue queue() {
-    return new Queue(message, true);
+    return new Queue(queueName, true);
   }
 
   @Bean

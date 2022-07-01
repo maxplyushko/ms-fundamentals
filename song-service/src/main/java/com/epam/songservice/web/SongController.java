@@ -40,6 +40,12 @@ public class SongController {
     return ResponseEntity.ok(new SongDto(song.getId()));
   }
 
+  @GetMapping
+  public ResponseEntity<List<SongDto>> findAll() {
+    final List<Song> songs = service.findAll();
+    return ResponseEntity.ok(mapper.entityToDto(songs));
+  }
+
   @GetMapping("/{id}")
   public ResponseEntity<SongDto> findById(@PathVariable Long id) {
     final Song song = service.findById(id);

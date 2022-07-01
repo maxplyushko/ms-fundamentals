@@ -7,6 +7,12 @@ spring:
     listener:
       simple:
         acknowledge-mode: manual
+  cloud:
+    stream:
+      bindings:
+        input:
+          group: songs
+          content-type: text/plain
 
   servlet:
     multipart:

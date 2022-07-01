@@ -6,7 +6,6 @@ import com.epam.resourceprocessor.client.ResourceServiceClient;
 import com.epam.resourceprocessor.client.SongServiceClient;
 import com.epam.resourceprocessor.parser.SongParser;
 import com.epam.resourceprocessor.processor.SongProcessor;
-import io.github.resilience4j.retry.annotation.Retry;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
