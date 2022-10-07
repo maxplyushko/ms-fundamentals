@@ -4,6 +4,8 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: ${POSTGRES_DEFAULT_PASSWORD}
+  profiles:
+    active: prod
 
 server:
   port: 8082

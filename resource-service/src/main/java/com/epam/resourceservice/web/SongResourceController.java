@@ -6,6 +6,7 @@ import com.epam.resourceservice.processor.QueueSender;
 import com.epam.resourceservice.processor.ResourceProcessor;
 import com.epam.resourceservice.validation.Mp3Format;
 import java.util.List;
+import java.util.Map;
 import javax.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;

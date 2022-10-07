@@ -5,6 +5,7 @@ import com.epam.songservice.domain.entity.Song;
 import com.epam.songservice.mapper.SongMapper;
 import com.epam.songservice.service.SongService;
 import java.util.List;
+import java.util.Map;
 import javax.validation.Valid;
 import javax.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,5 +57,11 @@ public class SongController {
   public ResponseEntity<List<Long>> deleteByIds(
       @RequestParam("id") @Size(max = 200) List<Long> id) {
     return ResponseEntity.ok(service.deleteByIds(id));
+  }
+
+  @GetMapping("/params")
+  public ResponseEntity<SongDto> testEndpoint(@RequestParam Map<String, String> params) {
+    final String param1 = params.get("param1");
+    return ResponseEntity.ok(SongDto.builder().name(param1).build());
   }
 }
